@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<section>
+  {% include 'includes/carousel.html' %}
+</section>
+<section class="container">
+  {% include 'includes/ticket.html' %}
+</section>
+{% endblock%}
