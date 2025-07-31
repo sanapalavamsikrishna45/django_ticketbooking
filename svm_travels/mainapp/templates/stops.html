@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+Stops
+{% endblock %}
+
+{% block content %}
+<section class="container2">
+  <!-- {% include 'includes/ticket.html' %} -->
+
+  {% for stop in stops %}
+      {% include 'includes/stopCard.html' %}
+  {% endfor %}
+
+</section>
+{% endblock%}
