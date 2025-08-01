@@ -8,6 +8,13 @@ body {
     background-color: #BDDDFC;
 
     header {
+        @media (max-width: 768px) {
+            .navbar-nav {
+                font-size: 14px;
+                gap: 10px;
+            }
+        }
+
         height: 60px;
         position: fixed;
         overflow: hidden;
@@ -34,7 +41,7 @@ body {
                     li.nav-item {
                         a.btn {
                             background-color: orange;
-                            padding: 9px;
+                            padding: 11px;
                             color: black;
                             font-weight: 700;
                             border-style: none;

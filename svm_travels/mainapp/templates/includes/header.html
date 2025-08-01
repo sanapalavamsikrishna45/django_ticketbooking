@@ -14,12 +14,15 @@
           <input class="form-control me-2 bg-white text-dark" type="search" placeholder="Search" aria-label="Search" />
           <button class="btn btn-outline-white bg-dark text-white" type="submit">Search</button>
         </form>
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary">Login</button>
-          <button type="button" class="btn btn-primary">Register</button>
+        <div class="btn-group" role="group" >
+          {% if not user.is_authenticated %}
+          <button type="button" class="btn btn-primary"><a href="{% url 'signin' %}">Login</a></button>
+          <button type="button" class="btn btn-primary"><a href="{% url 'signup' %}">Register</a></button>
+          {% else %}
           <button type="button" class="btn btn-danger"> <a href="nav-item"><i
                 class="bi bi-person-fill"></i></a></button>
         </div>
+        {% endif %}
       </div>
     </div>
 
