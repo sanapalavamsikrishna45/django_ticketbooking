@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Bus
+{% endblock %}
+
+{% block content %}
+
+<section class="container-bus">
+    {% for bus in buss %}
+    {% include 'includes/bus-card.html'  %}
+    {% endfor %}
+
+</section>
+
+{% endblock %}

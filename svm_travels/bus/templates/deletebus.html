@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+delete Bus
+
+{% endblock %}
+
+{% block content %}
+<div class="w-50 mx-auto" id="card">
+    <div class="card-head">
+        <div class="img-div">
+            <img src="{{bus.image.url}}" alt="no-img" >
+        </div>
+        <div>
+            {{bus.reg_no}}
+        </div>
+    </div>
+    <h3>Are You Sure You want to </h3>
+    <form method="post" enctype="multipart/form-data" class="form-control">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-danger mx-auto">Delete</button>
+        <a href="{% url 'bus_page' %}" class="btn btn-warning">Cancel</a>
+    </form>
+
+</div>
+
+{% endblock %}
