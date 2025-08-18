@@ -14,10 +14,10 @@ delete Bus
             <img src="{{bus.image.url}}" alt="no-img" >
         </div>
         <div>
-            {{bus.reg_no}}
+            <b>Reg_no:<imp>{{bus.reg_no}}</imp></b>
         </div>
     </div>
-    <h3>Are You Sure You want to </h3>
+    <h3>Are You Sure You want to delete </h3>
     <form method="post" enctype="multipart/form-data" class="form-control">
         {% csrf_token %}
         {{form.as_p}}

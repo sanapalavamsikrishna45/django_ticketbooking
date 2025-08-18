@@ -1,0 +1,14 @@
+{% block title %}
+stop detaile
+{% endblock %}
+
+{% block content %}
+<div class="container-stop-details">
+    {% include 'includes/stopCard.html' %}
+    <div>
+        <a class="btn btn-warning" href="{% url 'update_stop' stop.pk %}">Update</a>
+        <a class="btn btn-danger" href="{% url 'delete_stop' stop.pk %}">Delete</a>
+    </div>
+</div>
+
+{% endblock %}

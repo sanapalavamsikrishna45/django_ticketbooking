@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+route
+{% endblock %}
+
+{% block content %}
+<section class="container-addroute-btn">
+       <div class="marq">
+        <marquee class="mrk">Click here to add NEW ROUTE 👉 </marquee>
+       </div>
+       <div class="button">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                        <a class="btn btn-primary nav-link active" id="addroute" aria-current="page" href="{% url 'addroute_page' %}">Add route</a>
+                </li>
+        </ul>
+       </div>
+</section>
+<section class="container-route">
+        {% for busroute in busroutes %}
+        {% include 'includes/routecard.html' %}
+        {% endfor%}
+</section>
+
+{% endblock %}

@@ -3,18 +3,18 @@ from .models import Bus
 # Create your views here.
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-def busView(request):
-    template= 'home.html'
-    context = {
-        'buss' : Bus.objects.all()
-    }
-    return render (request, template, context)
+# def busView(request):
+#     template= 'home.html'
+#     context = {
+#         'buss' : Bus.objects.all()
+#     }
+#     return render (request, template, context)
 
 
 class BusList(ListView):
     model=Bus
     template_name = 'bus.html'
-    context_object_name = 'buss'
+    context_object_name = 'buses'
 
 
 

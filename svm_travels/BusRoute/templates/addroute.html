@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+
 {% block title %}
-Update - {{Bus.title}}
+Add route
 {% endblock %}
 
-
 {% block content %}
-<div class="w-50 mx-auto overflow-hidden" >
-    <form method="post" enctype="multipart/form-data" class="form-control">
+
+<div id="addroute-form" class="w-50 mx-auto">
+    <form method="post" enctype="multipart/form-data" class="form-control" id="addroute-form">
         {% csrf_token %}
         {% for field in form %}
         <div class="row">
@@ -14,11 +15,19 @@ Update - {{Bus.title}}
             <div class="col-sm-6">
                 {{field}}
             </div>
+            <div class="text-warning">
+                {{field.errors}}
+            </div>
         </div>
         {% endfor %}
-        <button type="submit" class="btn btn-primary">Add Bus</button>
+        <div class="col-6 text-warning">
+            {{form.non_field_errors}}
+        </div>
+        <button type="submit" class="btn btn-primary">Add Route</button>
     </form>
 
 </div>
+
+
 
 {% endblock %}

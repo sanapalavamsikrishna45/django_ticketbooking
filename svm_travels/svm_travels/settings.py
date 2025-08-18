@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authentication',
     'bus',
     'BusRoute',
+    'Schedule',
 ]
 
 MIDDLEWARE = [

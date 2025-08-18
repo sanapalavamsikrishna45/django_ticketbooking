@@ -9,9 +9,11 @@ body {
     display: flex;
     flex-direction: column;
 
+    /* the below line of code is use for header only */
+
     header {
 
-        overflow-y:hidden;
+        /* overflow-y: hidden; */
         height: 60px;
         position: fixed;
         /* overflow: hidden; */
@@ -24,7 +26,7 @@ body {
         .navbar {
             /* position: relative; */
             z-index: 10;
-
+            justify-content: space-around;
             height: 100%;
             background-color: #00246B;
 
@@ -70,17 +72,29 @@ body {
 
         }
 
-    }
-    
-    
+        #addbus {
+            background-color: #e65f47;
+            color: white;
+        }
 
+        #route {
+            background-color: crimson;
+            color: white;
+        }
+
+    }
+
+
+    
+/* The below line of code is used for entire main */
     main {
         height: 100%;
         margin-top: 65px;
         margin-bottom: 30px;
+        /* display:none; */
 
 
-        section.container-carousel{
+        section.container-carousel {
             width: 100%;
             height: 300px;
             border: 1px solid;
@@ -186,7 +200,12 @@ body {
             }
         }
 
-        section.container2 {
+/* the blow code is completly related to stop view */
+        section#addstop {
+            margin-bottom: 7px;
+        }
+/* the below lines of style is used for mainapp stop style sheet  */
+        section.container-stop {
 
             display: grid;
             grid-template-columns: auto auto auto;
@@ -266,14 +285,14 @@ body {
         }
 
         @media screen and (max-width:1050px) {
-            section.container2 {
+            section.container-stop {
                 grid-template-columns: auto auto;
             }
 
         }
 
         @media screen and (max-width:700px) {
-            section.container2 {
+            section.container-stop {
                 grid-template-columns: auto;
             }
 
@@ -302,19 +321,22 @@ body {
             }
         }
 
-        section.container-stops{
+        section.container-stops {
             div.card {
                 height: 200px;
                 width: 250px;
+
                 .card-img {
                     height: 60%;
                     width: 100%;
+
                     img {
                         height: 100%;
                         width: 100%;
                         object-fit: cover;
                     }
                 }
+
                 .card-body {
                     display: flex;
                     flex-direction: column;
@@ -323,13 +345,27 @@ body {
             }
         }
 
+
+        section#addbus {
+
+            ul.navbar-nav {
+                li.nav-item {
+                    a.btn {
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+
         section.container-bus {
+
             display: grid;
             grid-template-columns: auto auto auto;
             gap: 5px;
-            row-gap: 10px;
+            row-gap: 15px;
 
             div.bus-card {
+                overflow: hidden;
                 width: 350px;
                 height: 420px;
                 /* border: 2px solid black; */
@@ -346,7 +382,7 @@ body {
                     /* border: 1px solid greenyellow; */
                     width: 100%;
                     height: 70%;
-                    object-fit: contain;
+                    object-fit: cover;
                     background-color: black;
 
                     img {
@@ -430,10 +466,13 @@ body {
         /* the below style is used for that delete that bus */
 
         div#card {
+
             width: 350px;
             height: auto;
+
             /* border:2px solid red; */
             box-shadow: 3px 4px #00246B;
+            background-color: #eef0f3;
 
             .card-head {
                 width: 100%;
@@ -445,6 +484,7 @@ body {
                     width: 100%;
                     height: 100%;
                     object-fit: contain;
+                    background-color: #eef0f3;
 
                     img {
                         width: 100%;
@@ -456,22 +496,358 @@ body {
             }
         }
 
-
-
-    }
-    /* @media screen and (max-width:700px) {
+        /* @media screen and (max-width:700px) {
             main{
                 margin-top:105px;
             }
 
         } */
+/* the below lines fo code is used only fo ROUTE  */
+        section.container-addroute-btn{
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           background-color:#C4D9FF;
+           height:50px;
+           padding:4px;
+           div.marq{
+            text-align: center;
+            /* margin-left: 25%; */
+            margin: auto;
+            marquee.mrk{
+                /* background-color: #eef0f3; */
+                margin: auto;
+                 color: #e65f47;
+                 font-size:25px;
+                 font-weight: 600;
+            }
+           }
+           div.button{
+            padding:2px;
+            ul{
+                li{
+                    a.btn{
+                         font-size:20px;
+                       color: white;
+                       padding:4px;
+                    }
+                }
+            }
+           }
+          
+        }
+        section.container-route {
+            display: grid;
+            grid-template-columns: auto auto;
+            padding: 5px;
+            gap: 10px;
+            row-gap: 20px;
+            column-gap: 5%;
+            margin: auto;
 
-    footer {
-        bottom: 0;
-        position: fixed;
-        width: 100%;
-        height: 30px;
-        background-color: #6A89A7;
-        overflow: hidden;
+            div.route-card {
+                width: 500px;
+                height: 300px;
+                border-radius: 15px;
+                /* border: 1px solid navy; */
+                margin: auto;
+                background-color: #eef0f3;
+                box-shadow: rgba(89, 177, 202, 0.4) 5px 5px;
+                overflow: hidden;
+
+                div.card-head {
+                    display: flex;
+                    margin: auto;
+                    /* padding: 5px; */
+                    /* padding:5px; */
+                    width: 100%;
+                    height: 70%;
+                    column-gap: 10px;
+
+
+                    /* border: 1px solid black; */
+
+                    div.start-stop {
+
+                        width: 37%;
+                        height: 100%;
+                        object-fit: cover;
+                        /* border: 1px solid green; */
+
+                        img {
+                            /* object-fit: contain; */
+                            width: 100%;
+                            height: 100%;
+                            /* object-fit: contain; */
+
+                        }
+                    }
+
+                    div.dist-price {
+                        /* background-color: #6A89A7; */
+                        /* display: inline; */
+                        width: 26%;
+                        height: 100%;
+
+                        margin: auto;
+
+                        div.card-text1 {
+                            padding: 4px;
+                            margin: auto;
+                            /* display: inline; */
+                            height: 50%;
+                            width: 100%;
+                            row-gap: 20px;
+
+                            h5 {
+                                color: darkblue;
+                                text-align: center;
+
+                                span {
+                                    color: brown;
+                                }
+                            }
+                        }
+
+                        div.card-text2 {
+                            margin: auto;
+                            /* display: inline; */
+                            height: 50%;
+                            width: 100%;
+                            row-gap: 20px;
+                            padding: 4px;
+
+                            h5 {
+                                color: darkblue;
+                                text-align: center;
+
+                                span {
+                                    color: rgb(167, 15, 15);
+                                }
+                            }
+                        }
+
+
+                    }
+
+                    div.end-stop {
+                        width: 37%;
+                        height: 100%;
+                        object-fit: contain;
+                        /* border: 1px solid blue; */
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+
+                        }
+                    }
+
+
+                }
+
+                div.card-body {
+                    display: flex;
+
+                    width: 100%;
+                    height: 13%;
+                    /* border: 1px solid black; */
+
+                    div.start-title {
+                        width: 37%;
+                        height: 100%;
+                        background-color: #eef0f3;
+
+                        h4 {
+                            text-align: center;
+                            width: 100%;
+                            height: 100%;
+                            color: darkblue;
+                        }
+                    }
+
+                    h5.to {
+                        text-align: center;
+                        width: 26%;
+                        height: 100%;
+                        color: red;
+                    }
+
+                    div.end-title {
+                        background-color: #eef0f3;
+                        width: 37%;
+                        height: 100%;
+
+                        h4 {
+                            width: 100%;
+                            height: 100%;
+                            text-align: center;
+                            color: darkblue;
+                        }
+                    }
+                }
+
+                div.card-footer {
+                    padding: 4px;
+                    height: 17%;
+                    width: 100%;
+                    text-align: center;
+                    column-gap: 20px;
+
+                    a.btn {
+                        font-weight: 600;
+                    }
+
+                }
+
+
+            }
+
+
+
+
+        }
+
+
+        @media screen and (max-width:900px) {
+            section.container-route {
+                grid-template-columns: auto;
+            }
+        }
+
+
+        /* the bellow lines is used for the route delete card */
+                    div#delete-card-head{
+                        width: 500px;
+                        height: 250px;
+                        border-radius: 15px;
+                        /* border: 1px solid navy; */
+                        padding:8px;
+                        margin: auto;
+                        background-color: #eef0f3;
+                        box-shadow: rgba(89, 177, 202, 0.4) 5px 5px;
+                        overflow: hidden;
+
+                        div.card-body{
+                            height:50%;
+                            text-align: center;
+                            div.start-title{
+                                color: #00246B;
+                            }
+                            h5.to{
+                                color: red;
+                            }
+                            div.end-title{
+                                color: #00246B;
+                            }
+                        }
+
+                        div.card-foot{
+                            width:100%;
+                            height:50%;
+                            h3{
+                                color: red;
+                                text-align: center;
+                            }
+                            .form-control{
+                                background-color: #6A89A7;
+                                text-align: center;
+                                button.btn{
+                                   font-weight: 600;
+                                }
+                                a.btn{
+                                     font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+
+
+
+
+        /* the below code use for forms in route all forms related to the route is here */
+
+        div#addroute-form {
+
+            input {
+                width: 100%;
+            }
+        }
+
+
+/* the below lines fo code is used for only Schedule app */
+
+        section.container-schedule {
+            display: grid;
+            grid-template-columns: auto auto;
+            padding: 5px;
+            row-gap: 20px;
+            margin: auto;
+
+            div.schedule-card {
+                margin: auto;
+                width: 450px;
+                height: 300px;
+                border: 2px solid black;
+                display: flex;
+
+                div.card-log {
+                    width: 50%;
+                    height: 100%;
+                    object-fit: contain;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                div.card-body {
+                    width: 50%;
+                    height: 100%;
+                    text-align: center;
+                    padding:15px;
+                    div.card-text{
+                        height:70%;
+                        width:100%;
+                    }
+                    div.card-btn{
+                        
+                    }
+                    
+                }
+
+            }
+
+
+        }
+
+        @media screen and (max-width:700px) {
+            section.container-schedule {
+                grid-template-columns: auto;
+                /* margin-left:50%;
+            margin-right:50%;
+            transform:translate(-50%);
+            position: fixed; */
+            }
+
+        }
+
+
+
+
+
+
+
+        footer {
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+            height: 30px;
+            background-color: #6A89A7;
+            overflow: hidden;
+        }
     }
 }

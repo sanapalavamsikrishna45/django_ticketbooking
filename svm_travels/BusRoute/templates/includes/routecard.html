@@ -1,0 +1,40 @@
+{% load static %}
+<div class="route-card">
+    <div class="card-head">
+        <div class="start-stop">
+            <img src="{{busroute.start.img.url}}" alt="no-img">
+        </div>
+
+        <div class="dist-price">
+        
+            <div class="card-text1">
+                <h5>Distance</h5>
+                <h5> <span>{{busroute.dist}}</span>KM </h5>
+            </div>
+            <div class="card-text2">
+                <h5>Price</h5>
+                <h5> <span>{{busroute.price}}</span>Rs </h5>
+
+            </div>
+        </div>
+
+        <div class="end-stop">
+            <img src="{{busroute.end.img.url}}" alt="no-img">
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="start-title">
+            <h4>{{busroute.start.name}}</h4>
+        </div>
+        <h5 class="to">To</h5>
+        <div class="end-title">
+            <h4>{{busroute.end.name}}</h4>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-warning" href="{% url 'updateroute_page' busroute.pk %}">Update</a>
+        <a class="btn btn-danger" href="{% url 'deleteroute_page' busroute.pk %}">Delete</a>
+
+    </div>
+
+</div>

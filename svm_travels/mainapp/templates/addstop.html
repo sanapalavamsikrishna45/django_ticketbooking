@@ -5,7 +5,7 @@ Add Stop
 
 
 {% block content %}
-<div class="" id ="addForm" >
+<div id ="addForm" >
     <form method="post" enctype="multipart/form-data" class="form-control" id="addform">
         {% csrf_token %}
         {% for field in form %}

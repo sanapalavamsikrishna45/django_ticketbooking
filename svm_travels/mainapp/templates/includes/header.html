@@ -1,21 +1,27 @@
 <nav class="navbar d-flex   border-bottom border-body" data-bs-theme="dark">
   <div class=" container-fluid">
     <a class="navbar-brand" href="{% url 'homepage' %}">SVM_TRAVELS</a>
-    
       <div class="d-flex">
+           <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn  nav-link active" id="route" aria-current="page" href="{% url 'schedule_page' %}">Schedule</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn  nav-link active" id="route" aria-current="page" href="{% url 'route_page' %}">Route</a>
+        </li>
+      </ul>
+      
+
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="btn nav-link active" id="bus" aria-current="page" href="{% url 'bus_page' %}">Bus</a>
         </li>
 
       </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="btn btn-primary nav-link active" id="addbus" aria-current="page"
-            href="{% url 'addbus_page' %}">AddBus</a>
-        </li>
-
-      </ul>
+         
 
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -24,12 +30,7 @@
 
       </ul>
 
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="btn btn-warning nav-link active" aria-current="page" href="{% url 'addstop_page' %}">AddStops</a>
-        </li>
-
-      </ul>
+      
      
       <div class="d-flex">
         <div class="btn-group" role="group">

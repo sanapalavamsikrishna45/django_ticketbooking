@@ -5,9 +5,20 @@ Bus
 {% endblock %}
 
 {% block content %}
-
+  <section class="container-addroute-btn">
+       <div class="marq">
+        <marquee class="mrk">Click here to add NEW BUS 🚌 👉 </marquee>
+       </div>
+       <div class="button">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                        <a class="btn btn-primary nav-link active" id="addroute" aria-current="page" href="{% url 'addbus_page' %}">Add Bus</a>
+                </li>
+        </ul>
+       </div>
+</section>
 <section class="container-bus">
-    {% for bus in buss %}
+    {% for bus in buses %}
     {% include 'includes/bus-card.html'  %}
     {% endfor %}
 

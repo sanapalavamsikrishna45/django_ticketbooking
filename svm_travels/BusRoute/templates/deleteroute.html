@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+DeleteRoute
+{% endblock %}
+
+{% block content %}
+<div class="w-50 mx-auto" id="delete-card-head">
+    <div class="card-body">
+        <div class="start-title">
+            <h4>{{busroute.start.name}}</h4>
+        </div>
+        <h5 class="to">To</h5>
+        <div class="end-title">
+            <h4>{{busroute.end.name}}</h4>
+        </div>
+
+    </div>
+    <!-- {% include 'includes/routecard.html' %} -->
+    <div class="card-foot">
+        <h3>Are You Sure You want to delete? </h3>
+        <form method="post" enctype="multipart/form-data" class="form-control">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-danger mx-auto">Delete</button>
+            <a href="{% url 'route_page' %}" class="btn btn-warning">Cancel</a>
+        </form>
+    </div>
+
+
+</div>
+{% endblock %}

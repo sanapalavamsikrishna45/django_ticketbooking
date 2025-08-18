@@ -37,3 +37,7 @@ class DeleteStop(DeleteView):
     model = Stop
     template_name = 'deletestop.html'
     success_url = reverse_lazy('stops_page')
+
+# class DetailStop(DetailView):
+#     model = Stop
+#     template_name = 
