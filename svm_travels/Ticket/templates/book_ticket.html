@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ticket
+{% endblock %}
+
+{% block content  %}
+
+<section class="container-ticket">
+      <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Book now</button>
+      </form>
+</section>
+
+{% endblock %}

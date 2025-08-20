@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete schedule
+{% endblock %}
+
+{% block content %}
+<div class="s-d-card">
+    <div class="card">
+         {% include 'includes/card.html' %}
+    </div>
+    <div class="card-foot">
+        <h3>Are You Sure You want to delete? </h3>
+        <form method="post" enctype="multipart/form-data" class="form-control">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-danger mx-auto">Delete</button>
+            <a href="{% url 'schedule_page'%}" class="btn btn-warning">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

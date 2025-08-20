@@ -1,0 +1,15 @@
+{% load static %}
+
+<div class="schedule-card">
+    <div class="card-log">
+        <img src="{% static 'images/schedule.avif' %}" alt="no-img"> 
+    </div>
+    <div class="card-body">
+        <div class="card-text">
+         <h5>{{schedule.busroute.start.name}}</h5>
+        To
+        <h5> {{schedule.busroute.end.name}} </h5>
+        <p> {{schedule.start_time}} </p>
+        </div>
+    </div>
+</div>

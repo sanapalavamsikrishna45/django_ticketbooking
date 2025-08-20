@@ -1,26 +1,40 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 schedule
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+{% if user.is_staff %}
 <section class="container-addroute-btn">
        <div class="marq">
-        <marquee class="mrk">Click here to add NEW ROUTE 👉 </marquee>
+        <marquee class="mrk">Click here to add <span class="imp"> NEW SCHEDULE</span> 👉 </marquee>
        </div>
        <div class="button">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="btn btn-primary nav-link active" id="addroute" aria-current="page" href="{% url 'addroute_page' %}">Add route</a>
+                <a class="btn btn-primary nav-link active" id="addroute" aria-current="page" href="{% url 'addschedule_page' %}">Add Schedule</a>
             </li>
         </ul>
        </div>
 </section>
+ {% else %}
+ <section class="container-banner">
+    <div class="banner">
+         <img src="{% static 'images/banner.png' %}">
+    </div>
+    <div class="announcement">
+      <marquee class="anounce">“Book your tickets with SVM Travels and ride with comfort & safety.” <span>“One journey, a thousand memories – SVM Travels.”</span></marquee>
+      <marquee behavior="" direction="" class="anounce1">“Your journey begins with SVM Travels – Book. Ride. Explore.” <span>“Don’t just travel, travel in comfort with SVM Travels!”</span></marquee>
+    </div>
+ </section>
 <section class="container-schedule">
        {% for schedule in schedules %}
            {% include 'includes/schedule-card.html' %}
        {% endfor %}
 </section>
+{% endif %}
+{% endif %}
 
 {% endblock %}

@@ -11,9 +11,18 @@
         <h5> {{schedule.busroute.end.name}} </h5>
         <p> {{schedule.start_time}} </p>
         </div>
+        {% if user.is_authenticated %}
+        {% if user.is_staff %}
         <div class="card-btn">
-            <a href="" class="btn btn-warning">Update</a>
-            <a href="" class="btn btn-danger">Delete</a>
-        </div>   
+            <a href="{% url 'updateschedule_page' schedule.pk %}" class="btn btn-warning">Update</a>
+            <a href="{% url 'deleteschedule_page' schedule.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+        {% else %}
+        <div class="card-btn-booking">
+            <!-- <h5>Click </h5> -->
+          <a href="{% url 'ticket_page' %}" class="btn btn-primary">Book Ticktet</a>
+        </div>
+        {% endif %}
+        {% endif %}
     </div>
 </div>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add schedule
+{% endblock %}
+
+{% block content %}
+
+<div id="addschedule-form" class="w-50 mx-auto">
+    <form method="post" enctype="multipart/form-data" class="form-control" id="addroute-form">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="row">
+            <div class="col-sm-4"><label for="id_{{field.name}}">{{field.name.capitalize}}</label></div>
+            <div class="col-sm-6">
+                {{field}}
+            </div>
+            <div class="text-warning">
+                {{field.errors}}
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col-6 text-warning">
+            {{form.non_field_errors}}
+        </div>
+        <button type="submit" class="btn btn-primary">Add schedule</button>
+    </form>
+
+</div>
+
+
+
+{% endblock %}

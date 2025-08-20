@@ -6,8 +6,6 @@ from . import views
 urlpatterns = [
     path('login/', CustomLoginView.as_view(), name = 'signin'),
     path('register/', CustomRegisterView.as_view(), name ='signup'),
-
-
     path('send-otp/', views.send_otp_email, name='send-otp'),
     path('verify-otp/', views.verify_otp, name='verify-otp'),
     path('set-new-password/', views.set_new_password, name='set-new-password'),
