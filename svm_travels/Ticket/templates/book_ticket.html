@@ -4,14 +4,37 @@
 ticket
 {% endblock %}
 
-{% block content  %}
+{% block content %}
+<!-- <section class="container">
+      <div class="col-12">
+            <div>
+                  {{schedule.id}}
+            </div>
 
+            <div>
+                  Route : {{schedule.busroute.start}} to {{schedule.busroute.end}}
+            </div>
+      </div>
+</section> -->
 <section class="container-ticket">
-      <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit">Book now</button>
-      </form>
+      <div class="book-card">
+           <div class="">
+
+           </div>
+
+            <div class="">
+                  <form method="post" id="ticket-form">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <div class="book-now">
+                              <button class="btn btn-primary" type="submit">Book now</button>
+                        </div>
+
+                  </form>
+            </div>
+      </div>
+
+
 </section>
 
 {% endblock %}

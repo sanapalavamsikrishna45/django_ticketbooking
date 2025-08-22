@@ -10,7 +10,7 @@ class HTML5DateTimeInput(forms.DateTimeInput):
 class TicketCreateForm(forms.ModelForm):
     class Meta :
         model = Ticket
-        fields = '__all__'
+        fields = ['passengers', 'booking_date']
 
         widgets = {
             'booking_date' :HTML5DateTimeInput()

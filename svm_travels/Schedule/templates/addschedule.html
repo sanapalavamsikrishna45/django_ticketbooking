@@ -7,7 +7,7 @@ Add schedule
 {% block content %}
 
 <div id="addschedule-form" class="w-50 mx-auto">
-    <form method="post" enctype="multipart/form-data" class="form-control" id="addroute-form">
+    <form method="post" enctype="multipart/form-data" class="form-control" id="schedule-form">
         {% csrf_token %}
         {% for field in form %}
         <div class="row">

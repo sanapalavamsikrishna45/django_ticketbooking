@@ -159,75 +159,7 @@ body {
 
         }
 
-        section.container1 {
-            margin: 0;
-            margin-left: 50%;
-            margin-right: 50%;
-            transform: translatex(-50%);
 
-            justify-content: center;
-            align-items: center;
-            margin-top: 3px;
-            /* background-color: antiquewhite;
-            width: 90%; */
-            height: 250px;
-            align-items: center;
-            border-radius: 25px;
-
-            div.container {
-                width: 500px;
-                display: inline;
-
-
-                form {
-                    display: inline;
-
-                    div {
-                        display: flex;
-                        width: 100%;
-                        justify-content: space-between;
-
-                        div.from {
-                            display: inline;
-                            text-align: center;
-                            padding: 4px;
-
-                            .form-label {
-                                text-align: center;
-                                font-size: 25px;
-                                font-family: Arial, Helvetica, sans-serif;
-                                font-weight: bolder;
-                            }
-
-                            .form-control {
-                                color: black;
-                                border: 2px solid red;
-
-                            }
-                        }
-
-                        div.To {
-                            display: inline;
-                            text-align: center;
-                            padding: 4px;
-
-                            .form-label {
-                                text-align: center;
-                                font-size: 25px;
-                                font-family: Arial, Helvetica, sans-serif;
-                                font-weight: bolder;
-                            }
-
-                            .form-control {
-                                color: black;
-                                border: 2px solid red;
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
 
         /* the blow code is completly related to stop view */
         section#addstop {
@@ -270,6 +202,7 @@ body {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
+                        object-position: top;
                     }
                 }
 
@@ -335,7 +268,7 @@ body {
             position: fixed;
 
             #addform {
-                background-image: url("../images/main_bus.png");
+                /* background-image: url("../images/main_bus.png"); */
                 background-position: fixed;
                 background-size: 100% 100%;
                 background-color: #6A89A7;
@@ -343,7 +276,7 @@ body {
                 color: black;
                 font-weight: 700;
                 width: 350px;
-                height: 450px;
+                height: 350px;
 
                 select {
                     width: 100%;
@@ -386,6 +319,8 @@ body {
                 }
             }
         }
+
+        /* the below lines of code is used for bus app  */
 
         section.container-bus {
 
@@ -484,14 +419,16 @@ body {
                 grid-template-columns: auto auto;
             }
 
-            @media screen and (max-width:700px) {
-                section.container-bus {
-                    grid-template-columns: auto;
-                }
 
+        }
+
+        @media screen and (max-width:700px) {
+            section.container-bus {
+                grid-template-columns: auto;
             }
 
         }
+
 
         /* the below style is used for that delete that bus */
 
@@ -573,6 +510,52 @@ body {
                 }
             }
 
+        }
+
+        @media screen and (max-width:700px) {
+            section.container-addroute-btn {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #C4D9FF;
+                width: 100%;
+                height: 50px;
+                padding: 4px;
+                margin-bottom: 5px;
+
+                div.marq {
+                    text-align: center;
+                    /* margin-left: 25%; */
+                    margin: auto;
+
+                    marquee.mrk {
+                        /* background-color: #eef0f3; */
+                        margin: auto;
+                        color: #e65f47;
+                        font-size: 25px;
+                        font-weight: 600;
+                    }
+
+                }
+
+                div.button {
+                    padding: 2px;
+
+                    ul {
+                        li {
+                            a.btn {
+                                width: 100px;
+                                height: 50px;
+                                font-size: 25px;
+                                color: white;
+                                padding: 2px;
+                            }
+                        }
+                    }
+                }
+
+
+            }
         }
 
         section.container-route {
@@ -817,8 +800,16 @@ body {
         /* the below code use for forms in route all forms related to the route is here */
 
         div#addroute-form {
+            form {
+                background-color: #8897a6;
+                font-weight: 700;
+            }
 
             input {
+                width: 100%;
+            }
+
+            select {
                 width: 100%;
             }
         }
@@ -892,21 +883,76 @@ body {
 
         }
 
+        /*  the below lines fo code is used for only that card */
+        div.schedule-card {
+            width: 400px;
+            height: 300px;
+            margin: auto;
+            padding: 2px;
 
+            div.card-log {
+                height: 50%;
+                width: 100%;
 
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            div.card-body {
+                div.card-text {
+                    color: red;
+                    text-align: center;
+
+                    h5 {
+                        color: #00246B;
+                    }
+                }
+            }
+        }
+
+        /* the below lines of code is used for schedule delete view */
         div.s-d-card {
+            /* top:10%; */
             /* display: none; */
-            width: 500px;
-            height: auto;
+            width: 400px;
+
+            margin: auto;
 
             div.card {
                 width: 100%;
-                height: 50%;
+                height: 70%;
 
                 img {
                     height: 100%;
                     width: 100%;
                     object-fit: contain;
+                }
+            }
+
+            div.card-foot {
+                height: 30%;
+                width: 100%;
+
+                h3 {
+                    color: red;
+                }
+
+                form {}
+            }
+        }
+
+        /* the below lines of code is used for addschedule form */
+        div#addschedule-form {
+            width: auto;
+
+            form#schedule-form {
+                background-color: #6A89A7;
+
+                select {
+                    width: 100%;
                 }
             }
         }
@@ -964,6 +1010,19 @@ body {
 
         @media screen and (max-width:700px) {
             section.container-banner {
+                 width:100%;
+                            div.banner {
+                                width: 100%;
+                                height: 85%;
+                                object-fit: contain;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
+                            }
+
                 div.announcement {
                     width: 100%;
                     height: 15%;
@@ -998,6 +1057,52 @@ body {
                 }
             }
 
+            /* the below lines fo code is for add schedule form */
+            #addschedule-form {
+                margin-top: 10%;
+
+                form#schedule-form {
+                    background-color: #6A89A7;
+                    font-weight: 700;
+
+                }
+
+                /* background-color: #6A89A7; */
+                select {
+                    width: 100%;
+                }
+            }
+
+        }
+
+
+        /* the below lines of code is used fo the ticket app */
+        /* ticket-form */
+        section.container-ticket {
+            width: 350px;
+            height: auto;
+            margin: auto;
+            margin-top: 10%;
+
+            form#ticket-form {
+                padding: 10px;
+                width: 100%;
+                height: 100%;
+                background-color: #6A89A7;
+
+                label {
+                    font-weight: 700;
+                }
+
+                select {
+                    width: 100%;
+                }
+
+                div.book-now {
+                    text-align: center;
+                }
+
+            }
         }
 
 

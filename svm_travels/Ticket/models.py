@@ -13,8 +13,8 @@ from django.core.exceptions import ValidationError
 
 class Ticket(models.Model):
     schedule = models.ForeignKey(Schedule, on_delete= models.CASCADE)
-    start = models.ForeignKey(Stop, on_delete= models.CASCADE, related_name= 'ticket_start_stop')
-    end = models.ForeignKey(Stop, on_delete= models.CASCADE, related_name= 'ticket_end_stop')
+    # start = models.ForeignKey(Stop, on_delete= models.CASCADE, related_name= 'ticket_start_stop')
+    # end = models.ForeignKey(Stop, on_delete= models.CASCADE, related_name= 'ticket_end_stop')
     booking_date = models.DateTimeField()
     amount = models.PositiveIntegerField()
     passengers = models.PositiveIntegerField(default=0)
@@ -24,12 +24,6 @@ class Ticket(models.Model):
         ('Cancelled', 'Cancelled')
     ], default='Pending')
     booked_at = models.DateTimeField(auto_now_add=True)
-
-
-    def clean(self):
-        if self.start_id == self.end_id:
-            raise ValidationError("Start and End stops cannot be the same.")
-        
 
 
     def __str__(self):
