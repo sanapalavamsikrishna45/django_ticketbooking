@@ -10,6 +10,8 @@
         </div>
 
         <div class="card-body">
+
+
           <div class="mb-3">
             <div class="row">
               <div class="col-6">
@@ -23,19 +25,33 @@
             </div>
           </div>
 
+        
           <div class="mb-3">
             <div class="row">
               <div class="col-6">
                 <div class="small text-muted">Passengers</div>
-                <div>{{ ticket.passengers }}</div>
+                <ul class="list-group list-group-flush">
+                  {% for passenger in ticket.passengers.all %}
+                    <li class="list-group-item p-1">{{ passenger.name }} ({{ passenger.age }}, {{ passenger.get_gender_display }})</li>
+                  {% empty %}
+                    <li class="list-group-item p-1">No passengers added</li>
+                  {% endfor %}
+                </ul>
               </div>
               <div class="col-6">
                 <div class="small text-muted">Status</div>
-                <span class="badge bg-secondary">{{ ticket.status }}</span>
+                <span class="badge 
+                  {% if ticket.status == 'Pending' %}bg-warning
+                  {% elif ticket.status == 'Confirmed' %}bg-success
+                  {% elif ticket.status == 'Cancelled' %}bg-danger
+                  {% else %}bg-secondary{% endif %}">
+                  {{ ticket.get_status_display }}
+                </span>
               </div>
             </div>
           </div>
 
+          
           <div class="border rounded p-3 mb-3">
             <div class="d-flex justify-content-between align-items-center">
               <div class="fw-semibold">Total Amount</div>
@@ -43,10 +59,12 @@
             </div>
           </div>
 
+          
           <div class="alert alert-info mb-4" role="alert">
             Please review your details. Click “Proceed to Payment” to continue with Razorpay.
           </div>
 
+        
           <div class="d-flex gap-2">
             <a class="btn btn-outline-secondary"
                href="{% url 'book_ticket' ticket.schedule_id %}">
@@ -62,8 +80,9 @@
           </div>
         </div>
 
-        <div class="card-footer">
-          <small class="text-muted">Ticket ID: #{{ ticket.id }}</small>
+       
+        <div class="card-footer text-muted">
+          Ticket ID: #{{ ticket.id }}
         </div>
       </div>
     </div>

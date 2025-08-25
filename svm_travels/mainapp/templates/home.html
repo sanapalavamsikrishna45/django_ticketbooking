@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 Home
 {% endblock %}
@@ -8,11 +8,89 @@ Home
 <section class="container-carousel">
   {% include 'includes/carousel.html' %}
 </section>
-<section class="container">
 
+<section class="container my-5">
+  <h3 class="mb-4">Search Bus Schedules</h3>
+  <div class="row g-3 mb-4">
+    <div class="col-md-6">
+      <label for="start" class="form-label">Source</label>
+      <select id="start" class="form-select">
+        <option value="">Select Source</option>
+        {% for stop in stops %}
+          <option value="{{ stop.name }}">{{ stop.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="end" class="form-label">Destination</label>
+      <select id="end" class="form-select">
+        <option value="">Select Destination</option>
+        {% for stop in stops %}
+          <option value="{{ stop.name }}">{{ stop.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <div id="schedule-results" class="row g-3">
+    <!-- AJAX schedule cards will appear here -->
+  </div>
 </section>
-<section class="container">
 
-</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const startSelect = document.getElementById('start');
+    const endSelect = document.getElementById('end');
+    const resultsDiv = document.getElementById('schedule-results');
 
-{% endblock%}
+    const apiUrl = "{% url 'schedule-search-api' %}";
+
+    function fetchSchedules() {
+        const start = startSelect.value;
+        const end = endSelect.value;
+
+        if (!start && !end) {
+            resultsDiv.innerHTML = '';
+            return;
+        }
+
+        fetch(`${apiUrl}?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`)
+        .then(res => res.json())
+        .then(data => {
+            resultsDiv.innerHTML = '';
+            if (data.length === 0) {
+                resultsDiv.innerHTML = '<div class="alert alert-warning">No schedules found.</div>';
+                return;
+            }
+
+            data.forEach(s => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+
+                col.innerHTML = `
+                  <div class="schedule-card card shadow-sm">
+                    <div class="card-log">
+                      <img src="{% static 'images/main_bus.png' %}" class="img-fluid" alt="Bus Image">
+                    </div>
+                    <div class="card-body">
+                      <div class="card-text mb-1">
+                        <h6>${s.start} <b>To</b> ${s.end}</h6>
+                        <p>Departure: ${s.departure}</p>
+                      </div>
+                      <div class="card-btn-booking">
+                        <a href="ticket/book/${s.id}" class="btn btn-primary w-100">Book Ticket</a>
+                      </div>
+                    </div>
+                  </div>
+                `;
+                resultsDiv.appendChild(col);
+            });
+        });
+    }
+
+    startSelect.addEventListener('change', fetchSchedules);
+    endSelect.addEventListener('change', fetchSchedules);
+});
+</script>
+{% endblock %}

@@ -5,8 +5,8 @@ Update - {{Bus.title}}
 
 
 {% block content %}
-<div class="w-50 mx-auto overflow-hidden" >
-    <form method="post" enctype="multipart/form-data" class="form-control">
+<div class="w-50 mx-auto overflow-hidden">
+    <form method="post" enctype="multipart/form-data" class="form-control" id="addbus-form">
         {% csrf_token %}
         {% for field in form %}
         <div class="row">
@@ -17,6 +17,11 @@ Update - {{Bus.title}}
         </div>
         {% endfor %}
         <button type="submit" class="btn btn-primary">Add Bus</button>
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            {{ form.errors }}
+        </div>
+        {% endif %}
     </form>
 
 </div>

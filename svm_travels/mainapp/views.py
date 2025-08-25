@@ -4,15 +4,31 @@ from .models import Stop
 from django.urls import reverse_lazy
 
 # Create your views here.
+from django.shortcuts import render
+from Schedule.models import Schedule
+from mainapp.models import Stop
+
 def homeView(request):
-    template = 'home.html'
+    stops = Stop.objects.all()
+    schedules = None
+
+    start = request.GET.get('start', '').strip()
+    end = request.GET.get('end', '').strip()
+
+    if start or end:
+        schedules = Schedule.objects.all()
+        if start:
+            schedules = schedules.filter(busroute__start__icontains=start)
+        if end:
+            schedules = schedules.filter(busroute__end__icontains=end)
+
     context = {
-        'stops' : Stop.objects.all()
-        
+        'stops': stops,
+        'schedules': schedules,
+        'start': start,
+        'end': end,
     }
-    return render(request, template, context)
-
-
+    return render(request, 'home.html', context)
 
 
 

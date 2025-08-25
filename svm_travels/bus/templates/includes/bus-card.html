@@ -1,6 +1,6 @@
 <div class="bus-card">
     <div class="card-img">
-        <img src="{{bus.image.url}}" alt="no-img">
+        <img src="{% if bus.image %}{{bus.image.url}}{% endif %}" alt="no-img">
     </div>
     <div class="card-body">
         <div class="card-title">

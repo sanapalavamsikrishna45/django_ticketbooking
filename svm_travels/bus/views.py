@@ -3,6 +3,8 @@ from .models import Bus
 # Create your views here.
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from .forms import BusForm
+
 # def busView(request):
 #     template= 'home.html'
 #     context = {
@@ -21,14 +23,16 @@ class BusList(ListView):
 class AddBus(CreateView):
     model = Bus
     template_name = 'addbus.html'
-    fields = '__all__'
+    form_class = BusForm
+    # fields = '__all__'
     success_url = reverse_lazy('bus_page')
 
 
 class UpdateBus(UpdateView):
     model = Bus
     template_name = 'updatebus.html'
-    fields = '__all__'
+    form_class = BusForm
+    # fields = '__all__'
     success_url = reverse_lazy('bus_page')
 
 

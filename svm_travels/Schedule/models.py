@@ -7,7 +7,7 @@ from BusRoute.models import BusRoute
 class Schedule(models.Model):
     bus = models.ForeignKey(Bus, on_delete= models.CASCADE)
     busroute = models.ForeignKey(BusRoute, on_delete= models.CASCADE)
-    start_time = models.DateTimeField()
+    start_time = models.TimeField()
 
     def __str__(self):
         return f"schedule bus {self.bus}, {self.busroute} at {self.start_time}"
