@@ -95,28 +95,33 @@ body {
     }
 
     @media screen and (max-width:550px) {
-        header {
-            a.navbar-brand {
-                display: none;
+   
+            .navbar-brand {
+                display: none !important;
+            }
+            .navbar-icon {
+                display: block !important;
             }
 
-        }
+    
     }
 
-    @media screen and(min-width:550px) {
-        header {
+    /* @media screen and (min-width:550px) {
+       
             a.navbar-icon {
-                display: none;
+                display: block;
             }
 
-        }
-    }
+     
+    } */
 
     /* The below line of code is used for entire main */
     main {
         height: 100%;
+        width:100%;
         margin-top: 62px;
         margin-bottom: 30px;
+        overflow-x: hidden;
 
         /* display:none; */
         span.imp {
@@ -1184,13 +1189,81 @@ body {
 
         }
 
+        section#Search-bar{
+            background-color:#C4D9FF;
+            border-radius:5px;
+            /* padding:5px; */
+            height: auto;
+            padding:3%;
+            h3{
+                text-align: center;
+                color: #00246B;
+                font-weight: 700;
+            }
+            div#row{
+                /* background-color: #e65f47; */
+                div#col-1{
+                    /* background-color: #b0c9e2; */
+                    label{
+                        font-size:20px;
+                        font-weight: 700;
+                        color: #f02d0b;
+                    }
+                    select{
+                        /* background-color: rgb(228, 223, 216); */
+                        option{
+                            font-weight: 700;
+                        }
+                    }
+                }
+                div#col-2{
+                    label{
+                        font-size:20px;
+                        font-weight: 700;
+                        color: #f02d0b;
+                    }
+                    select{
+                        /* background-color: rgb(233, 225, 216); */
+
+                        option{
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }  
+        }
+
+        /* the below lines of code is used for marquee in home page */
+         section.anounce{
+            margin-top:2px;
+                /* width:100%; */
+                height:50px;
+                background-color:#00246B;
+                div.announcement{
+                    gap:5%;
+                    width:100%;
+                    height:100%;
+                    display: flex;
+                    align-items: center;
+                    margin-left:2%;
+                    margin-right:2%;
+                    marquee{
+                        color:white;
+                        font-size:22px;
+                        font-weight:700px;
+                        .text{
+                            color: red;
+                        }
+                    }
+                }
+            }
+
+          
 
 
-
-
-
-
-        /* the below lines of code is use for the footer of my website */
+        
+    }
+    /* the below lines of code is use for the footer of my website */
         footer {
             bottom: 0;
             position: fixed;
@@ -1199,5 +1272,4 @@ body {
             background-color: #6A89A7;
             overflow: hidden;
         }
-    }
 }

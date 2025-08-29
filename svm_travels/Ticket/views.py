@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, ListView, DetailView
 from django.urls import reverse
 from .models import Ticket, Passenger
 from .forms import TicketCreateForm
@@ -27,6 +27,7 @@ class BookTicketView(LoginRequiredMixin, CreateView):
         schedule_id = self.kwargs.get('schedule_id')
         this_schedule = get_object_or_404(Schedule, id=schedule_id)
         form.instance.schedule = this_schedule
+        form.instance.user = self.request.user
 
         # Save ticket first (required for ManyToMany)
         response = super().form_valid(form)
@@ -43,9 +44,21 @@ class BookTicketView(LoginRequiredMixin, CreateView):
         return response
 
 
-
 class ConfirmTicketView(DetailView):
     model = Ticket
     template_name = 'confirm_ticket.html'
     context_object_name = 'ticket'
 
+class MyTicketsView(ListView):
+    model = Ticket
+    template_name = 'my_tickets.html'
+    context_object_name = 'tickets'
+
+    def get_queryset(self):
+        # Get tickets for the logged-in user, most recent first
+        return Ticket.objects.filter(user=self.request.user).select_related('schedule').prefetch_related('passengers').order_by('-booked_at')
+    
+# class ViewTicket(DetailView):
+#     model = Ticket
+#     template_name = 'view_ticket.html'
+#     context_object_name = 'my_ticket'

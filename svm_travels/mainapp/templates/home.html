@@ -9,10 +9,20 @@ Home
   {% include 'includes/carousel.html' %}
 </section>
 
-<section class="container my-5">
+<section class="anounce">
+   <div class="announcement">
+        <marquee class="anounce">“Book your tickets with <span class="text">SVM Travels</span> and ride with comfort & safety.” <span>“One
+                journey, a thousand memories – SVM Travels.”</span></marquee>
+        <marquee behavior="" direction="" class="anounce1">“Your journey begins with SVM Travels – Book. Ride. Explore.”
+            <span class="text">“Don’t just travel, travel in comfort with</span> SVM Travels!”</marquee>
+    </div>
+</section>
+   
+{% if not user.is_superuser and not user.is_staff and user.profile.type != 'driver' %}
+<section class="container my-5" id="Search-bar">
   <h3 class="mb-4">Search Bus Schedules</h3>
-  <div class="row g-3 mb-4">
-    <div class="col-md-6">
+  <div class="row g-3  mb-4" id="row">
+    <div class="col-md-6" id="col-1">
       <label for="start" class="form-label">Source</label>
       <select id="start" class="form-select">
         <option value="">Select Source</option>
@@ -22,7 +32,7 @@ Home
       </select>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6" id="col-2">
       <label for="end" class="form-label">Destination</label>
       <select id="end" class="form-select">
         <option value="">Select Destination</option>
@@ -37,6 +47,7 @@ Home
     <!-- AJAX schedule cards will appear here -->
   </div>
 </section>
+{% endif %}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

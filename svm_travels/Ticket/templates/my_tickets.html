@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}My Tickets{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">My Tickets</h2>
+
+{% if tickets %}
+  <div class="row g-4">
+    {% for ticket in tickets %}
+      <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">
+              Ticket #{{ ticket.id }} - 
+              <span class="badge 
+                {% if ticket.status == 'Confirmed' %} bg-success 
+                {% elif ticket.status == 'Cancelled' %} bg-danger
+                {% else %} bg-warning text-dark {% endif %}">
+                {{ ticket.status }}
+              </span>
+            </h5>
+
+            <p class="mb-1">
+              <strong>Schedule:</strong> {{ ticket.schedule.route }}<br>
+              <strong>Booking Date:</strong> {{ ticket.booking_date|date:"M d, Y" }}<br>
+              <strong>Booked At:</strong> {{ ticket.booked_at|date:"M d, Y H:i" }}
+            </p>
+
+            <p class="mb-1"><strong>Amount:</strong> ₹{{ ticket.amount|floatformat:2 }}</p>
+            <p class="mb-2"><strong>Passengers ({{ ticket.passenger_count }}):</strong></p>
+            <ul class="list-unstyled ms-3">
+              {% for passenger in ticket.passengers.all %}
+                <li>• {{ passenger.name }} ({{ passenger.age }} yrs, {{ passenger.get_gender_display }})</li>
+              {% empty %}
+                <li>No passengers</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">You have no tickets booked yet.</div>
+{% endif %}
+{% endblock %}

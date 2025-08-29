@@ -33,7 +33,7 @@ class Ticket(models.Model):
         ('Confirmed', 'Confirmed'),
         ('Cancelled', 'Cancelled'),
     ]
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_tickets')
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     # start = models.ForeignKey(Stop, on_delete=models.CASCADE, related_name='ticket_start_stop')
     # end = models.ForeignKey(Stop, on_delete=models.CASCADE, related_name='ticket_end_stop')

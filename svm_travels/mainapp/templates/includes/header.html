@@ -12,13 +12,33 @@
         
       </div>
        {% else %}
+        
+      {% if user.profile.type != 'driver' %} 
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="btn  nav-link active" id="schedule" aria-current="page"
             href="{% url 'schedule_page' %}">Schedule</a>
         </li>
       </ul>
+      {% endif %}
+
       {% if user.is_authenticated %}
+       
+      {% if not user.is_superuser and not user.is_staff and user.profile.type != 'driver' %}
+          <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn nav-link active" id="bus" aria-current="page" href="{% url 'my_tickets' %}">my-tickets</a>
+        </li>
+      </ul>
+      {% endif %}
+
+      {% if user.profile.type == 'driver' %}
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn nav-link active" id="driver-bus" aria-current="page" href="{% url 'driver_buses' %}">my-scheduled-buses</a>
+        </li>
+      </ul>
+      {% endif %}
       {% if user.is_staff %}
       <!-- <ul class="navbar-nav">
         <li class="nav-item">
@@ -41,6 +61,7 @@
         </li>
 
       </ul>
+      
 
 
       <ul class="navbar-nav">

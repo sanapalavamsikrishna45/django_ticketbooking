@@ -71,12 +71,7 @@
               Back
             </a>
 
-            <form action="" method="post" class="ms-auto">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-primary">
-                Proceed to Payment
-              </button>
-            </form>
+            <a href="{% url 'payment:create_razorpay_order' ticket.id %}" class="btn btn-primary">Proceed to Payment</a>
           </div>
         </div>
 

@@ -28,6 +28,10 @@ urlpatterns = [
     path('route/', include('BusRoute.urls')),
     path('schedule/', include('Schedule.urls')),
     path('ticket/', include('Ticket.urls')),
+    
+    path('',include('payments.urls')),
+    path('driver/', include('driver.urls')),
+
     path('accounts/', include ('authentication.urls')),
     path('accounts/' , include('django.contrib.auth.urls'))
 

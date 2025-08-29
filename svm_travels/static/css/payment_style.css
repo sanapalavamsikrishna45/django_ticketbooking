@@ -1,0 +1,54 @@
+body {
+            /* background-color: #f7f7f7; */
+            /* background-color: aliceblue; */
+        }
+        .checkout-card {
+            max-width: 600px;
+            margin: 0 auto;
+            /* background-color: #dc3545; */
+            /* background-color: #fff; */
+            background-color: rgb(245, 241, 237);
+            border-radius: 8px;
+            box-shadow: 4px 5px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        .checkout-card h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color:navy;
+            font-weight: 700;
+        }
+        h4{
+            color: green;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:22px;
+            font-weight: 700;
+        }
+       
+        p{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:20px;
+            span.user{
+                color: #b02a37;
+                font-weight: 700;
+            }
+        }
+
+        p{
+            strong{
+                color: navy;
+            }
+            span{
+                color:brown;
+                font-weight: 800;
+            }
+        }
+
+        form.payment-form{
+            script{
+                a{
+                color: blue;
+            }
+        }
+        }
+        

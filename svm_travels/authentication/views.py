@@ -11,11 +11,20 @@ from django.contrib.auth.models import User
 from .forms import CustomLoginForm, CustomRegisterForm
 
 
+from django.urls import reverse_lazy
+
+
 class CustomLoginView(LoginView):
     template_name = 'login.html'
-    form_class = CustomLoginForm
+    form_class = CustomLoginForm  # your custom form
 
+    def get_success_url(self):
+        """Redirect driver to driver home, others to customer home."""
+        profile = getattr(self.request.user, 'profile', None)
 
+        if profile and profile.type == 'driver':
+            return reverse_lazy('driver_home')  # URL name for driver homepage
+        return reverse_lazy('homepage')   # URL name for customer homepage
 
 
 class CustomRegisterView(CreateView):

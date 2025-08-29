@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">Your Buses</h2>
+
+  <div class="row">
+    {% for bus in buses %}
+    <div class="col-md-4">
+      <div class="card shadow-sm mb-3">
+        {% if bus.image %}
+        <img src="{{ bus.image.url }}" class="card-img-top" alt="{{ bus.reg_no }}">
+        {% else %}
+        <img src="https://via.placeholder.com/300x150?text=No+Image" class="card-img-top" alt="No image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ bus.reg_no }}</h5>
+          <p class="card-text">Seats: {{ bus.no_of_seats }}</p>
+          <a href="{% url 'driver_bus_tickets' bus.id %}" class="btn btn-primary w-100">View Tickets</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No buses assigned to you.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

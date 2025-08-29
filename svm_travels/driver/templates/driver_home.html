@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Driver Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Welcome, {{ user.username }}!</h2>
+
+{% if buses %}
+  <div class="row g-4">
+    {% for bus in buses %}
+      {% include 'includes/driver_bus.html' %}
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">No buses are assigned to you yet.</div>
+{% endif %}
+{% endblock %}

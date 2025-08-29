@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">Tickets for Bus: {{ bus.reg_no }}</h2>
+
+  {% if grouped_tickets %}
+  <!-- Tabs Navigation -->
+  <ul class="nav nav-tabs" id="ticketTabs" role="tablist">
+    {% for date, tickets in grouped_tickets.items %}
+    <li class="nav-item" role="presentation">
+      <button class="nav-link {% if forloop.first %}active{% endif %}" 
+              id="tab-{{ forloop.counter }}" 
+              data-bs-toggle="tab" 
+              data-bs-target="#date-{{ forloop.counter }}" 
+              type="button" role="tab">
+        {{ date|date:"M d, Y" }}
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <!-- Tabs Content -->
+  <div class="tab-content mt-3">
+    {% for date, tickets in grouped_tickets.items %}
+    <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" 
+         id="date-{{ forloop.counter }}" 
+         role="tabpanel">
+      <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Passenger Count</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Booked At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ticket in tickets %}
+          <tr>
+            <td>{{ ticket.passenger_count }}</td>
+            <td>₹{{ ticket.amount }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.booked_at|date:"M d, Y h:i A" }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" class="text-center">No tickets for this date.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="alert alert-info text-center mt-3">
+    No tickets have been booked for this bus yet.
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
